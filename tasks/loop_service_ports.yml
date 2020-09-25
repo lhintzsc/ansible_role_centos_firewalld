@@ -1,0 +1,7 @@
+- name: "Copy services to {{ firewalld.service_path }}"
+  include_tasks: copy_services.yml
+  loop: "{{ firewalld.services }}"
+
+#- name: "Open ports for services"
+#  include_tasks: open_ports.yml
+#  loop: "{{ firewalld.services }}"

@@ -1,0 +1,3 @@
+---
+# tasks file for centos_firwalld
+- include_tasks: loop_service_ports.yml

@@ -1,0 +1,13 @@
+- template:
+    src: "port_service.xml"
+    dest: "{{ firewalld.service_path }}/port_{{ item.service }}.xml" 
+    owner: root
+    group: root
+    mode: '0664'
+  vars:
+    service: "{{ item.service }}"
+    description: "{{ item.description }}"
+    port: "{{ item.port }}"
+    protocol: "{{ item.protocol }}"
+# https://docs.ansible.com/ansible/latest/modules/template_module.html 
+# https://chmodcommand.com/ 

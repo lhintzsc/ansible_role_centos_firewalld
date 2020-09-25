@@ -1,0 +1,7 @@
+---
+# defaults file for centos_firwalld
+
+firewalld:
+  service_path: "/usr/lib/firewalld/services"
+  services: # can be multiple lines
+    - { service: "custom-http", description: "Custom HTTP for my Service", port: "8080", protocol: tcp }
