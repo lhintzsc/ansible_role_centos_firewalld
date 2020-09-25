@@ -6,7 +6,7 @@
     protocol: "{{ item.protocol }}"
   firewalld:
     zone: public
-    service: "{{ service }}"
+    service: "port-{{ service }}"
     permanent: yes
     state: enabled
   notify:

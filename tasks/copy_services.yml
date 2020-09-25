@@ -1,4 +1,4 @@
-- name: Copy service definitions
+- name: "Copy service {{ item.service }} to {{ firewalld.service_path }}"
   vars:
     service: "{{ item.service }}"
     description: "{{ item.description }}"
@@ -6,7 +6,7 @@
     protocol: "{{ item.protocol }}"
   template:
     src: "port_service.xml"
-    dest: "{{ firewalld.service_path }}/port_{{ service }}.xml" 
+    dest: "{{ firewalld.service_path }}/port-{{ service }}.xml" 
     owner: root
     group: root
     mode: '0664'
