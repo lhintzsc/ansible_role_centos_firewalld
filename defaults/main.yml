@@ -4,4 +4,4 @@
 firewalld:
   service_path: "/usr/lib/firewalld/services"
   services: # can be multiple lines
-    - { service: "custom-http", description: "Custom HTTP for my Service", port: "8080", protocol: tcp }
+    - { service: "custom-http", description: "Custom HTTP for my Service", port: "8090", protocol: tcp }
