@@ -1,0 +1,13 @@
+- name: Open Ports
+  vars:
+    service: "{{ item.service }}"
+    description: "{{ item.description }}"
+    port: "{{ item.port }}"
+    protocol: "{{ item.protocol }}"
+  firewalld:
+    zone: public
+    service: "{{ service }}"
+    permanent: yes
+    state: enabled
+  notify:
+    - Reload service firewalld

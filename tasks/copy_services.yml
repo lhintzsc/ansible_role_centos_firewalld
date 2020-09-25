@@ -1,4 +1,5 @@
-- vars:
+- name: Copy service definitions
+  vars:
     service: "{{ item.service }}"
     description: "{{ item.description }}"
     port: "{{ item.port }}"
@@ -9,6 +10,7 @@
     owner: root
     group: root
     mode: '0664'
-
+  notify:
+    - Reload service firewalld
 # https://docs.ansible.com/ansible/latest/modules/template_module.html 
 # https://chmodcommand.com/ 
