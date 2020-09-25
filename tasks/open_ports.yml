@@ -1,4 +1,4 @@
-- name: Open Ports
+- name: Open port {{ item.port}} for service {{ item.service }}
   vars:
     service: "{{ item.service }}"
     description: "{{ item.description }}"
