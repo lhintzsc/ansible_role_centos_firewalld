@@ -77,4 +77,3 @@ GNU
 Author Information
 ------------------
 lhintzsc@cisco.com
-# ansible_role_centos_firewalld
