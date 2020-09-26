@@ -45,7 +45,7 @@ Install the role using:
 
 ```
 ansible-galaxy install -r requirements.yml
-``
+```
 
 Use the variables to define a custom http and https port:
 ```
