@@ -1,17 +1,27 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role allows to open service ports for firewalld.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+For this role you will need a VM based on CentOS 7. Further firewalld must be installed.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The variables are used to define service ports that should be opened using firewalld:
+
+firewalld:
+    service_path: location of the firewalld service definitions (e.g. /usr/lib/firewalld/services)
+    services:
+        service: short service name (e.g. custom-http)
+        description: service description (e.g. Custom HTTP for my Service)
+        port: service port (e.g. 8090)
+        protocol: service protocol (e.g. tcp or udp)
+
+The service definition will be created using the template/port_service.xml.
 
 Dependencies
 ------------
