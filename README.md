@@ -13,6 +13,7 @@ Role Variables
 
 The variables are used to define service ports that should be opened using firewalld:
 
+```
 firewalld:
     service_path: location of the firewalld service definitions (e.g. /usr/lib/firewalld/services)
     services:
@@ -20,6 +21,7 @@ firewalld:
         description: service description (e.g. Custom HTTP for my Service)
         port: service port (e.g. 8090)
         protocol: service protocol (e.g. tcp or udp)
+```
 
 The service definition will be created using the template/port_service.xml.
 
@@ -31,19 +33,48 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Add the role to a requirements.yml:
 
+```
+- src: https://github.com/lhintzsc/ansible_role_centos_firewalld.git
+  version: master
+  name: centos firewalld
+```
+
+Install the role using:
+
+```
+ansible-galaxy install -r requirements.yml
+``
+
+Use the variables to define a custom http and https port:
+```
+firewalld:
+  service_path: "/usr/lib/firewalld/services"
+  services: # can be multiple lines
+    - { service: "custom-http", description: "Custom HTTP for my Service", port: "9080", protocol: tcp }
+    - { service: "custom-https", description: "Custom HTTPS for my Service", port: "8443", protocol: tcp }
+```
+
+Use the role in your playbook
+
+```
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - centos firewalld
+```
+
+Related Links
+-------
+
+https://docs.ansible.com/ansible/latest/galaxy/user_guide.html
 
 License
 -------
 
-BSD
+GNU
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+lhintzsc@cisco.com
 # ansible_role_centos_firewalld
