@@ -75,7 +75,7 @@ Related Links
 License
 -------
 
-MIT
+GNU
 
 Author Information
 ------------------
