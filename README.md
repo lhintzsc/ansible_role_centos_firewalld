@@ -1,29 +1,31 @@
 Role Name
 =========
 
-This role allows to open service ports for firewalld.
+This role opens service ports for firewalld.
 
 Requirements
 ------------
 
-For this role you will need a VM based on CentOS 7. Further firewalld must be installed.
+This role works for VMs based on 
+
+* CentOS 7
+
+Firewalld must be installed on those VMs.
 
 Role Variables
 --------------
 
-The variables are used to define service ports that should be opened using firewalld:
+The variables are used to define service ports:
 
 ```
-firewalld:
-    service_path: location of the firewalld service definitions (e.g. /usr/lib/firewalld/services)
-    services:
-        service: short service name (e.g. custom-http)
-        description: service description (e.g. Custom HTTP for my Service)
-        port: service port (e.g. 8090)
-        protocol: service protocol (e.g. tcp or udp)
+{{ firewalld.service_path }}: location of the firewalld service definitions (e.g. /usr/lib/firewalld/services)
+{{ firewalld.services.service }}: short service name (e.g. custom-http)
+{{ firewalld.services.description }}: service description (e.g. Custom HTTP for my Service)
+{{ firewalld.services.port }}: service port (e.g. 8090)
+{{ firewalld.services.protocol }}: service protocol (e.g. tcp or udp)
 ```
 
-The service definition will be created using the template/port_service.xml.
+The services are defined and configured per host using template/port_service.xml.
 
 Dependencies
 ------------
@@ -41,13 +43,14 @@ Add the role to a requirements.yml:
   name: centos firewalld
 ```
 
-Install the role using:
+Install the role:
 
 ```
 ansible-galaxy install -r requirements.yml
 ```
 
-Use the variables to define a custom http and https port:
+Set the variables to define services such as a custom http and https port:
+
 ```
 firewalld:
   service_path: "/usr/lib/firewalld/services"
@@ -67,12 +70,12 @@ Use the role in your playbook
 Related Links
 -------
 
-https://docs.ansible.com/ansible/latest/galaxy/user_guide.html
+[How to install roles using requirements file](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html)
 
 License
 -------
 
-GNU
+MIT
 
 Author Information
 ------------------
